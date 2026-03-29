@@ -8,6 +8,16 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	// cors
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+    w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
+    w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, apikey")
+
+    if r.Method == "OPTIONS" {
+        w.WriteHeader(http.StatusOK)
+        return
+    }
+
 	url := os.Getenv("SUPABASE_URL")
 	key := os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
 

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/store/apps.php", "destination": "/api/v1/store" },
+    { "source": "/store/apps.php", "destination": "/api/v1/store?v=8" },
     { "source": "/apis/version.php", "destination": "/api/v1/system?get=version" },
     { "source": "/apis/vercodename.php", "destination": "/api/v1/system?get=vercodename" },
     { "source": "/apis/verdesc.php", "destination": "/api/v1/system?get=verdesc" },

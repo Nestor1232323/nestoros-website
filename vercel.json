@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/store/apps.php", "destination": "/api/v1/store" },
+    { "source": "/apis/version.php", "destination": "/api/v1/system?get=version" },
+    { "source": "/apis/vercodename.php", "destination": "/api/v1/system?get=vercodename" },
+    { "source": "/apis/verdesc.php", "destination": "/api/v1/system?get=verdesc" },
+    { "source": "/apis/chat/latest-text", "destination": "/api/v1/chat" },
+    { "source": "/apis/chat/send", "destination": "/api/v1/chat" },
+    { "source": "/apis/icons/current.png", "destination": "/icons/system/current.png" }
+  ]
+}

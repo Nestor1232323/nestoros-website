@@ -599,7 +599,6 @@ footer {
       mobileOverlay.classList.remove('active');
     });
 
-    // Загрузка приложений
     const container = document.getElementById('apps-container');
 
     fetch('https://www.nestoros.ru/store/apps.php')
@@ -614,7 +613,7 @@ footer {
           name: "Developers",
           version: "1.0",
           description: "nestorOS 8 Developers App",
-          download_url: "/apps/nestorosdev.nosa",
+          download_url: "/store/apps/nestorosdev.nosa",
           price: "0.00",
           created_at: new Date().toISOString()
         });

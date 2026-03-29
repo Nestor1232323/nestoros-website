@@ -1,0 +1,33 @@
+[AppInfo]
+title = "TestApp"
+icon = "https://www.nestoros.ru/apps/icon.png"
+description = "Пример приложения nestorOS"
+author = "nestor"
+version = 1.0
+
+[Media]
+image = false
+text = true
+button = true
+
+[Image]
+url = "https://plsn.com/site/wp-content/uploads/fig-2.-1920px-SMPTE_Color_Bars_16x9.png"
+size = 100,100
+position = up, center
+
+[Text]
+text = "Пример приложения nestorOS"
+font = "Century Gothic"
+size = "20"
+position = up, center
+color = "255, 255, 255"
+
+[Button]
+type = default
+font = "Century Gothic"
+size = "10"
+text = "Нажми меня"
+position = center
+color = 255, 255, 255
+action = hyperlink
+hyperlink = "https://google.com"

@@ -1,0 +1,33 @@
+[AppInfo]
+title = "Developers"
+icon = "https://www.nestoros.ru/icons/icondev.png"
+description = "nestorOS 8 Developers App"
+author = "nestor"
+version = 1.0
+
+[Media]
+image = true
+text = true
+button = true
+
+[Image]
+url = "https://www.nestoros.ru/icons/icondev.png"
+size = 100,100
+position = up, center
+
+[Text]
+text = "nestorOS 8, открытая ОС (в плане кода) и дружелюбная для разработчиков с кучу возможностями, и открытой документации."
+font = "Century Gothic"
+size = "16"
+position = middle, center
+color = "255, 255, 255"
+
+[Button]
+type = default
+font = "Century Gothic"
+size = "10"
+text = "Открыть документацию"
+position = center
+color = 255, 255, 255
+action = hyperlink
+hyperlink = "https://www.nestoros.ru/docs/"

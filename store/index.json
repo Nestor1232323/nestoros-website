@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "TestApp",
+    "version": "1.0.0",
+    "description": "Пример приложения nestorOS",
+    "download_url": "https://www.nestoros.ru/store/apps/test.nosa",
+    "price": 0
+  }
+]

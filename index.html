@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+<link rel="icon" type="image/png" href="/favico.png">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>nestorOS</title>
+
+  <style>
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+    @font-face {
+
+      font-family: 'Gothic';
+
+      src: url('/fonts/GOTHIC.TTF') format('truetype');
+
+      font-weight: 400;
+
+      font-style: normal;
+
+    }
+
+    @font-face {
+
+      font-family: 'Gothic';
+
+      src: url('/fonts/GOTHICB.TTF') format('truetype');
+
+      font-weight: 700;
+
+      font-style: normal;
+
+    }
+
+    @font-face {
+
+      font-family: 'Gothic';
+
+      src: url('/fonts/GOTHICI.TTF') format('truetype');
+
+      font-weight: 400;
+
+      font-style: italic;
+
+    }
+
+    @font-face {
+
+      font-family: 'Gothic';
+
+      src: url('/fonts/GOTHICBI.TTF') format('truetype');
+
+      font-weight: 700; 
+
+      font-style: italic;
+
+    }
+
+    body {
+
+      font-family: 'Gothic', 'Century Gothic', Arial, sans-serif;
+
+      margin: 0;
+
+      padding: 0;
+
+      min-height: 100vh;
+
+      overflow: auto;
+
+      background: #FFFFFF;
+
+    }
+
+    html, body {
+
+      scrollbar-width: none;
+
+      -ms-overflow-style: none;
+
+    }
+
+    html::-webkit-scrollbar, 
+
+    body::-webkit-scrollbar {
+
+      display: none;
+
+    }
+
+    /* Хедер для ПК - floating эффект */
+
+    .headerofsite {
+
+      background: rgba(255, 255, 255, 0.7);
+
+      backdrop-filter: blur(40px);
+
+      height: 65px;
+
+      position: fixed;
+
+      top: 3px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 100%;
+
+
+      z-index: 9999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 0 25px;
+
+      border-radius: 50px;
+
+      transition: all 0.3s ease;
+font-weight: 700;
+    }
+
+    .headerofsite.scrolled {
+
+      background: rgba(0, 0, 0, 0.5);
+
+      backdrop-filter: blur(40px);
+
+      width: 90%;
+
+      height: 55px;
+
+      top: 10px;
+border-radius: 50px;
+      font-weight: 700;
+    }
+
+    .headerofsite.scrolled .text,
+
+    .headerofsite.scrolled .item {
+
+      color: #fff;
+
+    }
+
+    .about {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+    }
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      text-decoration: none;
+
+    }
+
+    .text {
+
+      font-size: 26px;
+
+      font-weight: 700;
+
+      color: #000;
+
+      text-decoration: none;
+
+      margin-left: 10px;
+
+      transition: color 0.3s ease;
+
+    }
+
+    .main-nav {
+
+      display: flex;
+
+      gap: 20px;
+
+    }
+
+    .item {
+
+      padding: 8px 18px;
+
+      font-size: 17px;
+
+      text-decoration: none;
+
+      color: #000;
+
+      border-radius: 13px;
+
+      transition: all 0.3s ease;
+
+    }
+
+    .item:hover {
+
+      transform: scale(1.05);
+
+      background: rgba(0, 0, 0, 0.1);
+
+    }
+
+    .item:active {
+
+      transform: scale(0.97);
+
+    }
+
+    .selecteditem {
+
+      background: rgba(0, 0, 0, 0.1);
+
+    }
+
+    /* Мобильное меню */
+
+    .mobile-header {
+
+      display: none;
+
+      background: rgba(255, 255, 255, 0.85);
+
+      backdrop-filter: blur(40px);
+
+      height: 60px;
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      z-index: 9999;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 0 20px;
+
+    }
+
+    .hamburger {
+
+      width: 30px;
+
+      height: 25px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      cursor: pointer;
+
+      z-index: 10000;
+
+    }
+
+    .hamburger span {
+
+      width: 100%;
+
+      height: 3px;
+
+      background: #000;
+
+      border-radius: 3px;
+
+      transition: all 0.3s ease;
+
+    }
+
+    
+    .mobile-menu {
+
+      position: fixed;
+
+      top: 0;
+
+      left: -100%;
+
+      width: 80%;
+
+      height: 100vh;
+      background: rgba(255, 255, 255);
+
+    
+      z-index: 9998;
+
+      padding: 80px 30px 30px;
+
+      transition: left 0.3s ease;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 15px;
+
+    }
+.hamburger.active span:nth-child(1) {
+
+  transform: rotate(45deg) translate(7px, 8px);
+
+}
+
+.hamburger.active span:nth-child(2) {
+
+  opacity: 0;
+
+}
+a {
+
+  text-decoration: none;
+        transition: transform 0.3s ease;
+
+
+}
+        .a:hover {
+
+      transform: scale(1.03);
+
+    }
+
+    .a:active {
+
+      transform: scale(0.98);
+
+    }
+.hamburger.active span:nth-child(3) {
+
+  transform: rotate(-45deg) translate(7px, -8px);
+
+}
+    .mobile-menu.active {
+
+      left: 0;
+    }
+
+    .mobile-overlay {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100vh;
+
+      background: rgba(0, 0, 0, 0.5);
+backdrop-filter: blur(5px);
+      z-index: 9997;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+    .mobile-overlay.active {
+
+      opacity: 1;
+
+      pointer-events: all;
+
+    }
+
+    .mobile-menu .item {
+
+      font-size: 20px;
+
+      padding: 15px 20px;
+
+      color: #000;
+
+      font-weight: 700;
+    }
+
+    /* Welcome секция */
+
+    .welcomer {
+
+      margin-top: 105px;
+
+      margin-left: 2%;
+
+      margin-right: 2%;
+
+      background: url('/wallpapers/wallpaper1.png') no-repeat center center;
+
+      background-size: cover;
+
+      height: 565px;
+
+      color: white;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding: 0 5%;
+
+      position: relative;
+
+      border-radius: 30px;
+
+    }
+
+    .textwel1 {
+
+      margin-top: 53px;
+
+      font-weight: 700;
+
+      font-size: 59px;
+
+    }
+
+    .textwel2 {
+
+      width: 390px;
+
+      font-size: 19px;
+
+    }
+
+    .buttondownload {
+
+      background-color: rgba(255, 255, 255, 0.3);
+
+      color: #FFFFFF;
+
+      font-weight: 700;
+
+      text-align: center;
+
+      width: 170px;
+
+      text-decoration: none;
+
+      margin-top: 13px;
+
+      height: 42px;
+
+      transition: transform 0.3s ease;
+
+      border-radius: 15px;
+
+      line-height: 42px;
+
+      display: inline-block;
+
+    }
+
+    .buttondownload:hover {
+
+      transform: scale(1.03);
+
+    }
+
+    .buttondownload:active {
+
+      transform: scale(0.98);
+
+    }
+
+    /* Плитки особенностей */
+
+    .tiles {
+
+      margin-top: 4%;
+
+      margin-left: 4%;
+
+      margin-right: 4%;
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      gap: 24px;
+
+      padding: 40px 5%;
+
+      background: #FCFCFC;
+
+      border-radius: 30px;
+
+    }
+
+    .tile {
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 20px;
+
+      user-select: none;
+
+      transition: transform 0.3s ease;
+
+      cursor: default;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+    .tile:hover {
+
+      transform: translateY(-10px);
+
+    }
+
+    .tile:active {
+
+      background: rgba(255, 255, 255, 0.5);
+
+    }
+
+    .tile h3 {
+
+      text-align: left;
+
+      color: #000000;
+
+      margin: 0;
+
+      padding: 0;
+
+      font-size: 20px;
+
+      font-weight: 700;
+
+    }
+
+    .tile p {
+
+      text-align: left;
+
+      color: black;
+
+      margin-top: 5px;
+
+      padding: 0;
+
+      font-size: 16px;
+
+    }
+
+    .titletext p {
+
+      color: #000;
+
+      background-color: #FFF;
+
+      font-size: 20px;
+
+      font-weight: 700;
+
+      text-align: center;
+
+      margin: 0;
+
+      padding: 20px 0;
+
+    }
+
+    .image-container {
+
+      display: flex;
+
+      gap: 25px;
+
+      max-width: 1200px;
+
+      margin: 15px auto;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+    }
+
+    .image {
+
+      width: calc(33.333% - 17px);
+
+      min-width: 250px;
+
+      height: auto;
+
+      border-radius: 17px;
+
+      transition: transform 0.3s ease;
+
+    }
+
+    .image:hover {
+
+      transform: scale(1.03);
+
+    }
+
+    .button {
+
+      padding: 10px 20px;
+
+      background-color: #CDB7CA;
+
+      color: #FFFFFF;   font-weight: 700;
+
+      text-align: center;
+
+      width: auto;
+
+      text-decoration: none;
+
+      
+
+      transition: transform 0.3sease;
+
+      border-radius: 15px;
+
+      line-height: 22px;
+
+      display: inline-block;
+
+    }
+
+    .button:hover {
+
+      transform: scale(1.03);
+
+    }
+
+    .button:active {
+
+      transform: scale(0.98);
+
+    }
+
+    .center-wrapper {
+
+      text-align: center;
+
+      margin: 30px 0;
+
+    }
+
+    .center-text {
+
+      text-align: center;
+
+      font-size: 16px;
+
+      margin: 15px auto;
+
+      max-width: 800px;
+
+      padding: 0 20px;
+
+    }
+
+    .center-text p {
+
+      margin-bottom: 10px;
+
+      color: #333;
+
+    }
+
+    footer {
+
+      background-color: rgba(0,0,0, 0.1);
+
+      padding: 20px;
+
+      text-align: center;
+
+      font-size: 0.9em;
+
+      color: #555;
+
+    }
+.why {
+
+  text-align: center;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  color: #000;
+
+  margin-bottom: 40px;
+
+  width: 100%;
+
+  grid-column: 1 / -1; /* Занимает всю ширину grid */
+
+}
+    /* Стили для секции галереи как у tiles */
+.gallery-section {
+  margin-top: 4%;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.gallery-container {
+  padding: 40px 5%;
+  background: #FCFCFC;
+  border-radius: 30px;
+}
+
+/* Заголовок галереи */
+.gallery-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+/* Контейнер для изображений */
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin: 15px auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Центрирование кнопки */
+.gallery-container .center-wrapper {
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+    /* Медиазапросы для мобильных */
+
+    @media (max-width: 768px) {
+
+      .headerofsite {
+
+        display: none;
+
+      }
+
+      .mobile-header {
+
+        display: flex;
+
+      }
+
+      .welcomer {
+
+        margin-top: 80px;
+
+        height: 400px;
+
+      }
+
+      .textwel1 {
+
+        font-size: 36px;
+
+      }
+
+      .textwel2 {
+
+        width: 100%;
+
+        font-size: 16px;
+
+      }
+
+      .tiles {
+
+        margin-left: 2%;
+
+        margin-right: 2%;
+
+        padding: 20px 3%;
+
+      }
+
+      .image {
+
+        width: 100%;
+
+        min-width: unset;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Хедер для ПК -->
+
+  <header>
+
+    <div class="headerofsite" id="navbar">
+
+      <div class="about">
+
+        <div class="logo">
+
+          <a href="/">
+
+            
+            <span class="text">nestorOS</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <nav class="main-nav">
+
+        <a href="/" class="item selecteditem">Главная</a>
+
+        <a href="/apps/" class="item">Приложения</a>
+
+        <a href="/updates/" class="item">Обновления</a>
+
+        <a href="/docs/" class="item">Документация</a>
+
+        <a href="/downloads/" class="item">Скачать</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- Мобильный хедер -->
+
+  <div class="mobile-header">
+
+    <div class="hamburger" id="hamburger">
+
+      <span></span>
+
+      <span></span>
+
+      <span></span>
+
+    </div>
+
+    <div class="logo">
+
+      <a href="/">
+        <span class="text" style="font-size: 20px;">nestorOS</span>
+
+      </a>
+
+    </div>
+
+    <div style="width: 30px;"></div>
+
+  </div>
+
+  <!-- Мобильное меню -->
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <nav class="mobile-menu" id="mobileMenu">
+
+    <a href="/" class="item selecteditem">Главная</a>
+
+    <a href="/apps/" class="item">Приложения</a>
+
+    <a href="/updates/" class="item">Обновления</a>
+
+    <a href="/docs/" class="item">Документация</a>
+
+    <a href="/downloads/" class="item">Скачать</a>
+
+  </nav>
+
+  <!-- Welcome секция -->
+
+  <section class="welcomer">
+
+    <div class="textwel1">nestorOS 8</div>
+
+    <div class="textwel2">Новая версия nestorOS с улучшенной производительностью и современным дизайном.</div>
+
+    <a class="buttondownload" href="/versions/current.pptm">Скачать</a>
+
+  </section>
+
+  <!-- Особенности -->
+
+  <section class="tiles">
+<h2 class="why">Почему мы?</h2>
+    <div class="tile">
+
+      <h3>AI-фишки</h3>
+
+      <p>nestorOS 8 имеет 2 типа ИИ, с генерацией картинок и текста, мы используем провайдера OpenRouter.</p>
+
+    </div>
+
+    <div class="tile">
+
+      <h3>Современный дизайн</h3>
+
+      <p>Полупрозрачный интерфейс с эффектами размытия создает невероятную атмосферу.</p>
+
+    </div>
+
+    <div class="tile">
+
+      <h3>Открытый код</h3>
+
+      <p>Мы разрешаем модифицировать код nestorOS, смотреть наши фишки, AI фишки, чаты и т.д.</p>
+
+    </div>
+
+    <div class="tile">
+
+      <h3>Для разработчиков</h3>
+
+      <p>Мы предоставляем официальное API для nestorOS и её сервисов.</p>
+
+    </div>
+
+    <div class="tile">
+
+      <h3>Установка приложений</h3>
+
+      <p>Вы можете использовать .nosa файлы для установки приложений.</p>
+
+    </div>
+
+    <div class="tile">
+
+      <h3>Персонализация</h3>
+
+      <p>Вы можете кастомизировать nestorOS под себя.</p>
+
+    </div>
+
+  </section>
+
+  <!-- Заголовок галереи -->
+<!-- Галерея скриншотов -->
+<section class="gallery-section"> <!-- Добавляем общий контейнер -->
+  <div class="gallery-container"> <!-- Внутренний контейнер как у tiles -->
+    
+    <!-- Заголовок галереи -->
+    <div class="gallery-title">
+      <h2>Галерея скриншотов</h2>
+    </div>
+    
+    <!-- Изображения -->
+    <div class="image-container">
+      <img src="/screenshots/desktop.png" alt="Рабочий стол" class="image">
+      <img src="/screenshots/settings.png" alt="Настройки" class="image">
+      <img src="/screenshots/ai-setup.png" alt="Настройка ИИ" class="image">
+      <img src="/screenshots/terminal.png" alt="Терминал" class="image">
+      <img src="/screenshots/chat.png" alt="Чаты" class="image">
+      <img src="/screenshots/apps.png" alt="Приложения" class="image">
+      <img src="/screenshots/weather.png" alt="Погода" class="image">
+      <img src="/screenshots/gallery.png" alt="Галерея" class="image">
+      <img src="/screenshots/calculator.png" alt="Калькулятор" class="image">
+    </div>
+    
+    <!-- Кнопка (опционально) -->
+    
+  </div>
+</section>
+  
+
+  <!-- Кнопка по центру -->
+
+  <div class="center-wrapper">
+
+   
+  </div>
+
+  <!-- Описание системы -->
+
+  <section class="title">
+
+    <div class="titletext">
+
+      <p>Описание системы</p>
+
+    </div>
+
+  </section>
+
+  <section class="title">
+
+    <div class="center-text">
+
+      <p>nestorOS — операционная система с революционным дизайном и много возможностей.</p>
+
+      <p>И всё это вы можете использовать на вашем компьютере прямо сейчас!</p>
+
+    </div>
+
+  </section>
+
+  <!-- Кнопка скачивания -->
+
+  <div class="center-wrapper">
+
+    <a href="/versions/current.pptm" class="button">Скачать последнюю версию</a>
+
+  </div>
+
+  <!-- Подвал -->
+
+  <footer>
+
+    nestorOS — Открытая операционная система на PowerPoint. Код открытый. Дизайн закрытый.
+
+  </footer>
+
+  <script>
+
+    // Floating navbar при скролле
+
+    const navbar = document.getElementById('navbar');
+
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+
+      const currentScroll = window.pageYOffset;
+
+      
+
+      if (currentScroll > 50) {
+
+        navbar.classList.add('scrolled');
+
+      } else {
+
+        navbar.classList.remove('scrolled');
+
+      }
+
+      
+
+      lastScroll = currentScroll;
+
+    });
+
+    // Мобильное меню
+
+    const hamburger = document.getElementById('hamburger');
+
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    hamburger.addEventListener('click', () => {
+
+      hamburger.classList.toggle('active');
+
+      mobileMenu.classList.toggle('active');
+
+      mobileOverlay.classList.toggle('active');
+
+    });
+
+    mobileOverlay.addEventListener('click', () => {
+
+      hamburger.classList.remove('active');
+
+      mobileMenu.classList.remove('active');
+
+      mobileOverlay.classList.remove('active');
+
+    });
+
+    console.log('nestorOS загружен!');
+
+  </script>
+
+</body>
+
+</html>

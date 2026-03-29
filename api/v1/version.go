@@ -7,7 +7,7 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	supabaseStorageURL := os.Getenv("SUPABASE_URL") + "/storage/v1/object/public/assets/versions/"
+	supabaseStorageURL := os.Getenv("SUPABASE_URL") + "/storage/v1/object/public/versions/"
 
 	v := r.URL.Query().Get("v")
 	if v == "" {

@@ -7,6 +7,18 @@
     { "source": "/apis/verdesc.php", "destination": "/api/v1/system?get=verdesc" },
     { "source": "/apis/chat/latest-text", "destination": "/api/v1/chat" },
     { "source": "/apis/chat/send", "destination": "/api/v1/chat" },
-    { "source": "/apis/icons/current.png", "destination": "/icons/system/current.png" }
+    { "source": "/apis/icons/current.png", "destination": "/icons/system/current.png" },
+    { "source": "/versions/5.0/beta/(.*)", "destination": "/api/v1/version?v=5.0b" },
+    { "source": "/versions/5.0/mobile/(.*)", "destination": "/api/v1/version?v=5.0m" },
+    { "source": "/versions/5.0/release/(.*)", "destination": "/api/v1/version?v=5.0r" },
+    { "source": "/versions/5.0/tablet/(.*)", "destination": "/api/v1/version?v=5.0t" },
+    { "source": "/versions/5.0/tv/(.*)", "destination": "/api/v1/version?v=5.0tv" },
+    { "source": "/versions/5.0/update1/(.*)", "destination": "/api/v1/version?v=5.0u1" },
+    { "source": "/versions/6.0/(.*)", "destination": "/api/v1/version?v=6.0" },
+    { "source": "/versions/7.0/(.*)", "destination": "/api/v1/version?v=7.0" },
+    { "source": "/versions/8.0/(.*)", "destination": "/api/v1/version?v=8.0" },
+    { "source": "/versions/8.1/(.*)", "destination": "/api/v1/version?v=8.1" },
+    { "source": "/versions/current.pptm", "destination": "/api/v1/version?v=current" },
+    { "source": "/versions/current", "destination": "/api/v1/version?v=current" }
   ]
 }

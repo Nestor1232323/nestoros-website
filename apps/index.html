@@ -601,7 +601,7 @@ footer {
 
     const container = document.getElementById('apps-container');
 
-    fetch('https://www.nestoros.ru/store/apps.php')
+    fetch('/store/apps.php')
       .then(response => {
         if (!response.ok) throw new Error('Сервер вернул ошибку ' + response.status);
         return response.json();

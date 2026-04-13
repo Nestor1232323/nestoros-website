@@ -20,6 +20,7 @@
     { "source": "/versions/8.1/(.*)", "destination": "/api/v1/version?v=8.1" },
     { "source": "/versions/current.pptm", "destination": "/api/v1/version?v=current" },
     { "source": "/versions/current", "destination": "/api/v1/version?v=current" },
-    { "source": "/versions/current/", "destination": "/api/v1/version?v=current" }
+    { "source": "/versions/current/", "destination": "/api/v1/version?v=current" },
+    { "source": "/settings/status/", "destination": "/settings/iswebversionaviable.json" }
   ]
 }

@@ -54,6 +54,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			"7.0":   ".pptm",
 			"8.0":   ".pptm",
 			"8.1":   ".pptm",
+			"8.2":   ".pptm",
 		}
 		
 		if val, ok := extensions[v]; ok {
